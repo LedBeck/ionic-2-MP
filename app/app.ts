@@ -8,6 +8,7 @@ import { ConferenceData } from './providers/conference-data';
 import { LoginPage } from './pages/login/login';
 import { SignupPage } from './pages/signup/signup';
 import { TabsPage } from './pages/tabs/tabs';
+import { QrscannerPage } from './pages/qrscanner/qrscanner';
 import { TutorialPage } from './pages/tutorial/tutorial';
 import { UserData } from './providers/user-data';
 
@@ -43,7 +44,7 @@ class ConferenceApp {
     { title: 'Login', component: LoginPage, icon: 'log-in' },
     { title: 'Signup', component: SignupPage, icon: 'person-add' }
   ];
-  rootPage: any = TutorialPage;
+  rootPage: any = QrscannerPage;
 
   constructor(
     public events: Events,
