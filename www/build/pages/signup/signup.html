@@ -21,7 +21,7 @@
         </ion-input>
       </ion-item>
       <p [hidden]="username.valid || submitted == false" danger padding-left>
-        Username is required
+        Se necesita tu nombre de usuario
       </p>
 
       <ion-item>
@@ -30,7 +30,34 @@
         </ion-input>
       </ion-item>
       <p [hidden]="password.valid || submitted == false" danger padding-left>
-        Password is required
+        Se necesita tu password
+      </p>
+
+      <ion-item>
+        <ion-label floating primary>Nombre</ion-label>
+        <ion-input [(ngModel)]="signup.nombre" name="nombre" type="text" #nombre="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="nombre.valid || submitted == false" danger padding-left>
+        Se necesita tu nombre
+      </p>
+
+      <ion-item>
+        <ion-label floating primary>Apellidos</ion-label>
+        <ion-input [(ngModel)]="signup.apellido" name="apellidos" type="text" #apellido="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="apellido.valid || submitted == false" danger padding-left>
+        Se necesita tu apellido
+      </p>
+
+      <ion-item>
+        <ion-label floating primary>Email</ion-label>
+        <ion-input [(ngModel)]="signup.email" name="email" type="text" #email="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="email.valid || submitted == false" danger padding-left>
+        Se necesita tu email
       </p>
 
       <div padding>

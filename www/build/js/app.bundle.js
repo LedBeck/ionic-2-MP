@@ -671,14 +671,34 @@ var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
 var tabs_1 = require('../tabs/tabs');
 var user_data_1 = require('../../providers/user-data');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
 var SignupPage = (function () {
-    function SignupPage(navCtrl, userData) {
+    function SignupPage(navCtrl, userData, http) {
         this.navCtrl = navCtrl;
         this.userData = userData;
+        this.http = http;
         this.signup = {};
         this.submitted = false;
     }
     SignupPage.prototype.onSignup = function (form) {
+        //Mandar datos al servidor
+        var link = 'http://localhost/ionic2MP_servidor/registro_usuario.php';
+        var datos = JSON.stringify({
+            username: form.form._value.username,
+            password: form.form._value.password,
+            nombre: form.form._value.nombre,
+            apellidos: form.form._value.apellidos,
+            email: form.form._value.email
+        });
+        console.log(datos);
+        this.http.post(link, datos)
+            .subscribe(function (data) {
+            console.log(data);
+        }, function (error) {
+            console.log("Oooops!");
+        });
+        console.log(form);
         this.submitted = true;
         if (form.valid) {
             this.userData.signup(this.signup.username);
@@ -689,12 +709,12 @@ var SignupPage = (function () {
         core_1.Component({
             templateUrl: 'build/pages/signup/signup.html'
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData, http_1.Http])
     ], SignupPage);
     return SignupPage;
 }());
 exports.SignupPage = SignupPage;
-},{"../../providers/user-data":16,"../tabs/tabs":14,"@angular/core":164,"ionic-angular":478}],12:[function(require,module,exports){
+},{"../../providers/user-data":16,"../tabs/tabs":14,"@angular/core":164,"@angular/http":291,"ionic-angular":478,"rxjs/add/operator/map":616}],12:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
