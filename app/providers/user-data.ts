@@ -26,9 +26,11 @@ export class UserData {
     }
   }
 
-  login(username) {
+  login(username, qr, id) {
     this.storage.set(this.HAS_LOGGED_IN, true);
     this.setUsername(username);
+    this.setCodigoQR(qr);
+    this.setId(id);
     this.events.publish('user:login');
   }
 
@@ -48,8 +50,28 @@ export class UserData {
     this.storage.set('username', username);
   }
 
+  setCodigoQR(qr){
+    this.storage.set('codigo', qr);
+  }
+
+  setId(id){
+    this.storage.set('id_usuario', id);
+  }
+
   getUsername() {
     return this.storage.get('username').then((value) => {
+      return value;
+    });
+  }
+
+  getCodigoQR() {
+    return this.storage.get('codigo').then((value) => {
+      return value;
+    });
+  }
+
+  getId() {
+    return this.storage.get('id_usuario').then((value) => {
       return value;
     });
   }

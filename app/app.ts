@@ -44,7 +44,8 @@ class ConferenceApp {
     { title: 'Login', component: LoginPage, icon: 'log-in' },
     { title: 'Signup', component: SignupPage, icon: 'person-add' }
   ];
-  rootPage: any = QrscannerPage;
+  rootPage: any = LoginPage;
+  qr: string;
 
   constructor(
     public events: Events,
@@ -92,6 +93,7 @@ class ConferenceApp {
   listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
       this.enableMenu(true);
+      this.getCodigo();
     });
 
     this.events.subscribe('user:signup', () => {
@@ -106,6 +108,13 @@ class ConferenceApp {
   enableMenu(loggedIn) {
     this.menu.enable(loggedIn, 'loggedInMenu');
     this.menu.enable(!loggedIn, 'loggedOutMenu');
+  }
+
+  getCodigo() {
+    this.userData.getCodigoQR().then((cod) => {
+      this.qr = cod;
+      console.log(this.qr);
+    });
   }
 }
 
