@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
@@ -18,7 +18,7 @@ export class LoginPage {
   data: any;
   local = [];
 
-  constructor(public navCtrl: NavController, public userData: UserData, public http: Http) { }
+  constructor(public navCtrl: NavController, public userData: UserData, public http: Http, public menu: MenuController) { }
 
   onLogin(form) {
 
@@ -73,5 +73,10 @@ export class LoginPage {
 
   onSignup() {
     this.navCtrl.push(SignupPage);
+  }
+
+  ionViewDidEnter() {
+    // the root left menu should be disabled on the tutorial page
+    this.menu.enable(false);
   }
 }

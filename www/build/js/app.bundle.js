@@ -257,10 +257,11 @@ var user_data_1 = require('../../providers/user-data');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 var LoginPage = (function () {
-    function LoginPage(navCtrl, userData, http) {
+    function LoginPage(navCtrl, userData, http, menu) {
         this.navCtrl = navCtrl;
         this.userData = userData;
         this.http = http;
+        this.menu = menu;
         this.login = {};
         this.submitted = false;
         this.local = [];
@@ -308,11 +309,15 @@ var LoginPage = (function () {
     LoginPage.prototype.onSignup = function () {
         this.navCtrl.push(signup_1.SignupPage);
     };
+    LoginPage.prototype.ionViewDidEnter = function () {
+        // the root left menu should be disabled on the tutorial page
+        this.menu.enable(false);
+    };
     LoginPage = __decorate([
         core_1.Component({
             templateUrl: 'build/pages/login/login.html'
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData, http_1.Http])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData, http_1.Http, ionic_angular_1.MenuController])
     ], LoginPage);
     return LoginPage;
 }());
