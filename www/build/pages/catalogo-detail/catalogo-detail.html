@@ -1,0 +1,22 @@
+<!--
+  Generated template for the CatalogoDetailPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{products.nombre}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img [src]="products.imagen" />
+  <h2>{{products.nombre}}</h2>
+  <h3>ID: {{products.id}}</h3>
+  <h3>Precio: {{products.precio}}</h3>
+  <h3>Categoria: {{products.etiquetas}}</h3>
+</ion-content>

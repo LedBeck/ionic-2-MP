@@ -12,38 +12,44 @@ import 'rxjs/add/operator/map';
   templateUrl: 'build/pages/signup/signup.html'
 })
 export class SignupPage {
-  signup: {username?: string, password?: string,nombre?: string, apellido?: string, email?:string} = {};
+  signup: {username?: string, password?: string, confirma?: string,nombre?: string, apellido?: string, email?:string} = {};
   submitted = false;
 
   constructor(public navCtrl: NavController, public userData: UserData, public http: Http) {}
 
   onSignup(form) {
     //Mandar datos al servidor
-    var link = 'http://localhost/ionic2MP_servidor/registro_usuario.php';
-    var datos = JSON.stringify({
-        username: form.form._value.username,
-        password: form.form._value.password,
-        nombre: form.form._value.nombre,
-        apellidos: form.form._value.apellidos,
-        email: form.form._value.email
-      });
+    if(this.signup.password === this.signup.confirma)
+    {
+      var link = 'http://localhost/ionic2MP_servidor/registro_usuario.php';
+      var datos = JSON.stringify({
+          username: form.form._value.username,
+          password: form.form._value.password,
+          nombre: form.form._value.nombre,
+          apellidos: form.form._value.apellidos,
+          email: form.form._value.email
+        });
 
-      console.log(datos);
+        console.log(datos);
 
-       this.http.post(link, datos)
-       .subscribe(data => {
-         console.log(data);
-       }, error => {
-           console.log("Oooops!");
-       });
+         this.http.post(link, datos)
+         .subscribe(data => {
+           console.log(data);
+         }, error => {
+             console.log("Oooops!");
+         });
 
 
-    console.log(form);
-    this.submitted = true;
+      console.log(form);
+      this.submitted = true;
 
-    if (form.valid) {
-      this.userData.signup(this.signup.username);
-      this.navCtrl.push(TabsPage);
+      if (form.valid) {
+        this.userData.signup(this.signup.username);
+        this.navCtrl.push(TabsPage);
+      }
+    }else{
+    console.log("Oooops!");
     }
+
   }
 }

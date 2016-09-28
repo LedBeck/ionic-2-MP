@@ -34,6 +34,15 @@
       </p>
 
       <ion-item>
+        <ion-label floating primary>Confirma tu Password</ion-label>
+        <ion-input [(ngModel)]="signup.confirma" name="confirma" type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <!-- <p [hidden]="confirma.valid || submitted == false" danger padding-left>
+        tu password no es igual!
+      </p> -->
+
+      <ion-item>
         <ion-label floating primary>Nombre</ion-label>
         <ion-input [(ngModel)]="signup.nombre" name="nombre" type="text" #nombre="ngModel" required>
         </ion-input>

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController,Nav, MenuController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
+import { CatalogoPage } from '../catalogo/catalogo';
 import { UserData } from '../../providers/user-data';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -13,6 +14,9 @@ import 'rxjs/add/operator/map';
   templateUrl: 'build/pages/login/login.html'
 })
 export class LoginPage {
+
+  @ViewChild(Nav) nav: Nav;
+
   login: {username?: string, password?: string} = {};
   submitted = false;
   data: any;
@@ -45,8 +49,10 @@ export class LoginPage {
         this.local = res.json();
         // console.log(this.local[0].qr);
         this.userData.login(this.login.username, this.local[0].qr, this.local[0].id);
-        this.navCtrl.push(TabsPage);
+        // this.navCtrl.push(CatalogoPage);
+        this.navCtrl.setRoot(CatalogoPage);
       }else{
+        alert('Error en usuario y/o contraseña!');
         console.log("Error en Login");
       }
       // console.log(res.status);

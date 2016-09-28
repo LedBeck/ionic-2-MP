@@ -11,6 +11,7 @@ import { TabsPage } from './pages/tabs/tabs';
 import { QrscannerPage } from './pages/qrscanner/qrscanner';
 import { TutorialPage } from './pages/tutorial/tutorial';
 import { UserData } from './providers/user-data';
+import {CatalogoPage} from './pages/catalogo/catalogo';
 
 interface PageObj {
   title: string;
@@ -32,7 +33,7 @@ class ConferenceApp {
   // the login page disables the left menu
   appPages: PageObj[] = [
     { title: 'Schedule', component: TabsPage, icon: 'calendar' },
-    { title: 'Speakers', component: TabsPage, index: 1, icon: 'contacts' },
+    { title: 'Catalogo', component: CatalogoPage, index: 1, icon: 'contacts' },
     { title: 'Map', component: TabsPage, index: 2, icon: 'map' },
     { title: 'About', component: TabsPage, index: 3, icon: 'information-circle' },
   ];
@@ -102,6 +103,7 @@ class ConferenceApp {
 
     this.events.subscribe('user:logout', () => {
       this.enableMenu(false);
+       this.nav.setRoot(LoginPage);
     });
   }
 
