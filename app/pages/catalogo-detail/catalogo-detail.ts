@@ -26,7 +26,7 @@ contador = 0;
       this.cartService.addItem(this.products);
     }
   //  this.numero = 1;
-      this.navCtrl.push(CarritoPage);
+      this.navCtrl.setRoot(CarritoPage);
 
       //  console.log(this.cartService.getTotalPrice())
     }

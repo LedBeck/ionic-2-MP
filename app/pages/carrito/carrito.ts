@@ -38,6 +38,8 @@ export class CarritoPage {
 
   quitar(carr, i){
     this.carrito.deleteItem(carr, i);
+    this.carrito.getCart();
+    this.total=this.carrito.getTotalPrice();
   }
 
 }

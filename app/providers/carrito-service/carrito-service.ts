@@ -20,8 +20,9 @@ export class CarritoService {
         console.log(this.Item);
     }
     deleteItem(item , i){
-        this.Item = this.Item[i].filter(cartItem=>cartItem!==item);
-        console.log(this.Item);
+      console.log(i);
+      this.Item.splice(i,1);
+        //this.Item = this.Item[i].filter(cartItem=>cartItem!==item);
     }
     // clearCart(){
     //     this.cart = [];
