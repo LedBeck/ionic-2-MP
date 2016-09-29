@@ -5,6 +5,7 @@ import { Splashscreen, StatusBar } from 'ionic-native';
 
 import { AccountPage } from './pages/account/account';
 import { ConferenceData } from './providers/conference-data';
+import { CarritoService } from './providers/carrito-service/carrito-service';
 import { LoginPage } from './pages/login/login';
 import { SignupPage } from './pages/signup/signup';
 import { TabsPage } from './pages/tabs/tabs';
@@ -12,6 +13,7 @@ import { QrscannerPage } from './pages/qrscanner/qrscanner';
 import { TutorialPage } from './pages/tutorial/tutorial';
 import { UserData } from './providers/user-data';
 import {CatalogoPage} from './pages/catalogo/catalogo';
+import {CarritoPage} from './pages/carrito/carrito';
 
 interface PageObj {
   title: string;
@@ -33,13 +35,15 @@ class ConferenceApp {
   // the login page disables the left menu
   appPages: PageObj[] = [
     { title: 'Schedule', component: TabsPage, icon: 'calendar' },
-    { title: 'Catalogo', component: CatalogoPage, index: 1, icon: 'contacts' },
-    { title: 'Map', component: TabsPage, index: 2, icon: 'map' },
-    { title: 'About', component: TabsPage, index: 3, icon: 'information-circle' },
+    { title: 'Catalogo', component: CatalogoPage, index: 1, icon: 'contacts' }
+    // { title: 'Map', component: TabsPage, index: 2, icon: 'map' },
+    // { title: 'About', component: TabsPage, index: 3, icon: 'information-circle' },
   ];
   loggedInPages: PageObj[] = [
-    { title: 'Account', component: AccountPage, icon: 'person' },
+    {title : 'Carrito', component: CarritoPage, icon:'cart'},
+    { title: 'Cuenta', component: AccountPage, icon: 'person' },
     { title: 'Logout', component: TabsPage, icon: 'log-out' }
+
   ];
   loggedOutPages: PageObj[] = [
     { title: 'Login', component: LoginPage, icon: 'log-in' },
@@ -130,4 +134,4 @@ class ConferenceApp {
 // See the theming docs for the default values:
 // http://ionicframework.com/docs/v2/theming/platform-specific-styles/
 
-ionicBootstrap(ConferenceApp, [ConferenceData, UserData], { });
+ionicBootstrap(ConferenceApp, [ConferenceData, UserData, CarritoService], { });

@@ -9419,3 +9419,12 @@ ion-item[track=navigation] .dot {
   color: #60646B; }
   .tutorial-page p b {
     color: #000000; }
+
+.catalogo-detail .numero {
+  font-size: 30px;
+  margin: 0px 15px 0px 15px;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle; }
+
+.carrito img {
+  max-width: 45%; }

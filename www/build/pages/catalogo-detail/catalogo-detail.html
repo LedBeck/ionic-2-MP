@@ -13,10 +13,12 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="catalogo-detail">
   <img [src]="products.imagen" />
   <h2>{{products.nombre}}</h2>
   <h3>ID: {{products.id}}</h3>
   <h3>Precio: {{products.precio}}</h3>
   <h3>Categoria: {{products.etiquetas}}</h3>
+  <button (click)="mas()"><ion-icon name="add"></ion-icon></button><span class="numero">{{numero}}</span><button (click)="menos()"><ion-icon name="remove"></ion-icon></button>
+  <button (click)="addToCart()">Añadir al carrito <ion-icon name="cart"></ion-icon></button>
 </ion-content>
